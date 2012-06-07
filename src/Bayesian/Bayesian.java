@@ -47,12 +47,12 @@ public class Bayesian {
             for (int i=0; i<vectorsNumber; i++ ){
                 if (expectedClasses[i] == c){
                     for (int j=0; j<vectorSize; j++){
-                        D[j] += Math.abs(vectors[i][j] - M[j]);
+                        D[j] += Math.pow((vectors[i][j] - M[j]), 2);
                     }
                 }
             }
             for (int j=0; j<vectorSize; j++){
-                D[j] = (Math.pow(D[j], 2) / (double) numberOfClass[c]);
+                D[j] = (D[j] / (double) numberOfClass[c]);
             }
             for (int j=0; j<vectorSize; j++){
                 featFreq [c][j] = new Pnormal(M[j], D[j]);
